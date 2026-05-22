@@ -8,7 +8,7 @@
 
 ## What is FinSight AI?
 
-FinSight AI is an advanced AI-powered financial customer care bot built for Indian banking customers. It goes beyond a basic chatbot — it proactively detects fraud, handles disputes, calculates EMIs, and supports multilingual conversations.
+FinSight AI is an advanced AI-powered financial customer care bot built for Indian banking customers. It goes beyond a basic chatbot - it proactively detects fraud, handles disputes, calculates EMIs, and supports multilingual conversations.
 
 ---
 
@@ -83,6 +83,6 @@ FinSight-AI/
 ├── .gitignore
 └── README.md 
 
----
+```
 
 Built by **Seku Mohamed Hanifa A** for FlowZint AI Hackathon 2026
