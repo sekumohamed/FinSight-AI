@@ -1,0 +1,28 @@
+# Python backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/.env
+backend/*.db
+backend/*.sqlite
+
+# Node frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+*.log
+npm-debug.log*
