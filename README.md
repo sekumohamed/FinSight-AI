@@ -81,8 +81,8 @@ FinSight-AI/
 │   ├── package-lock.json
 │   └── vite.config.js
 ├── .gitignore
-└── README.md ```
+└── README.md 
 
 ---
 
-Built by **sekumohamed** for FlowZint AI Hackathon 2026
+Built by **Seku Mohamed Hanifa A** for FlowZint AI Hackathon 2026
