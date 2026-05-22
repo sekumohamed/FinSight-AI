@@ -82,6 +82,7 @@ export default function App() {
   const alertShown = useRef(false);
 
   useEffect(() => {
+    fetch("https://finsight-ai-tclm.onrender.com/").catch(() => {});
     axios.get("https://finsight-ai-tclm.onrender.com/transactions").then(r => {
       const data = r.data;
       setTransactions(data);
@@ -103,8 +104,32 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    const loadData = () => {
+      axios.get("https://finsight-ai-tclm.onrender.com/transactions")
+        .then(r => {
+          const data = r.data;
+          setTransactions(data);
+          if (alertShown.current) return;
+          alertShown.current = true;
+          const suspicious = data.filter(t => t.category === "Unknown" || t.amount > 10000);
+          if (suspicious.length > 0) {
+            const alertMsg = suspicious.map(t =>
+              `TXN ${t.id} — ${t.merchant} — Rs.${t.amount.toLocaleString()} on ${t.date}`
+            ).join("\n");
+            setMessages(prev => [...prev, {
+              role: "assistant",
+              content: `Fraud Alert: I have detected ${suspicious.length} suspicious transaction(s) on your account:\n\n${alertMsg}\n\nWould you like me to help you dispute any of these?`,
+              type: "alert"
+            }]);
+          }
+          axios.get("https://finsight-ai-tclm.onrender.com/analytics").then(r => setAnalytics(r.data));
+        })
+        .catch(() => {
+          setTimeout(loadData, 5000);
+        });
+    };
+    loadData();
+  }, []);
 
   const startVoice = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
