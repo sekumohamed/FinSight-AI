@@ -82,10 +82,10 @@ export default function App() {
   const alertShown = useRef(false);
 
   useEffect(() => {
-    axios.get("https://finsight-ai-tclm.onrender.com/transactions").then(r => {
+    axios.get("http://127.0.0.1:8000/transactions").then(r => {
       const data = r.data;
       setTransactions(data);
-      axios.get("https://finsight-ai-tclm.onrender.com/analytics").then(r => setAnalytics(r.data));
+      axios.get("http://127.0.0.1:8000/analytics").then(r => setAnalytics(r.data));
       if (alertShown.current) return;
       alertShown.current = true;
       const suspicious = data.filter(t => t.category === "Unknown" || t.amount > 10000);
@@ -172,7 +172,7 @@ export default function App() {
       setInput("");
       setLoading(true);
       try {
-        const res = await axios.post("https://finsight-ai-tclm.onrender.com/chat", {
+        const res = await axios.post("http://127.0.0.1:8000/chat", {
           message,
           history: newMsgs.slice(0,-1).map(m => ({ role: m.role, content: m.content }))
         });
@@ -255,7 +255,7 @@ export default function App() {
 
   const raiseDispute = async (transaction_id, merchant, amount) => {
   try {
-    const res = await axios.post("https://finsight-ai-tclm.onrender.com/dispute", {
+    const res = await axios.post("http://127.0.0.1:8000/dispute", {
       transaction_id, merchant, amount
     });
     setDisputes(prev => [...prev, res.data]);
@@ -315,7 +315,7 @@ export default function App() {
       return;
     }
     try {
-      const res = await axios.post("https://finsight-ai-tclm.onrender.com/chat", {
+      const res = await axios.post("http://127.0.0.1:8000/chat", {
         message: input,
         history: messages.map(m => ({ role: m.role, content: m.content }))
       });
