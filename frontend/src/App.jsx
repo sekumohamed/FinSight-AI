@@ -314,7 +314,7 @@ export default function App() {
           )}
           <div style={{ flex:1 }}>
             <div style={{ fontWeight:"600", color:"#0f172a", fontSize:"14px" }}>Financial Customer Care</div>
-            <div style={{ fontSize:"11px", color:"#64748b" }}>Powered by Groq · Multilingual</div>
+            <div style={{ fontSize:"11px", color:"#64748b" }}>Multilingual</div>
           </div>
           <button onClick={exportChat}
             style={{ fontSize:"11px", padding:"5px 12px", borderRadius:"16px", background:"#f1f5f9", color:"#64748b", border:"1px solid #e2e8f0", cursor:"pointer", fontWeight:"500", whiteSpace:"nowrap" }}>
